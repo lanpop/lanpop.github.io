@@ -2,6 +2,7 @@
 layout: "post"
 title: "SpringMVC学习笔记"
 date: "2018-12-11 16:07"
+excerpt: “快速搭建Spring Web 应用”能够让我们非常快速地开始使用Spring Boot
 ---
 
 # 搭建SpringMVC项目的步骤：
