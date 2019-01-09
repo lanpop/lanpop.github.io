@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "重构--改善既有代码的设计"
+title: "重构--改善既有代码的设计（1）"
 date: "2018-12-14 16:41"
 excerpt: "Refactoring--test, small change..."
 ---
