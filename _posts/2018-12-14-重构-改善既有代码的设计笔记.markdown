@@ -1,0 +1,152 @@
+---
+layout: "post"
+title: "重构--改善既有代码的设计"
+date: "2018-12-14 16:41"
+---
+<div id="toc" class="toc"></div>
+# The First Step in Refactoring
+Build a solid set of tests for that section of code.
+在开始重构代码前，确保已经准备好这部分功能的自动测试。
+
+# Decomposing and Redistributing the Statement Method
+第一个目标就是过长的方法，将方法分解为多个短小的部分。
+Smaller pieces of code tend to make things more manageable，较小的代码使事情更加容易管理。
+>一点一点的重构修改程序，以便于出错时发现bug
+
+Rename,good code should communicate what it is doing clearly,and variable names are a key to clear code.变量名是使代码清晰的关键
+>变量：Rental aRental;
+
+Any fool can write code that a computer can understand.Good programmers write code that humans can understand.
+## Move Method
+In most cases a method should be on the object whose data it uses.方法中使用谁的数据就放到哪个对象里面。将方法体进行封装，放到它该去的地方。
+
+修改之后，需要替换掉调用老方法的位置，但是如果是`public`的方法，尽量不改动老方法的声明，因为修改后需要的改动太大。
+
+## Replace Temp with Query
+一个变量通过方法获取后，不再改变值，且这个变量使用次数不多，可以考虑不使用变量接收，直接通过方法返回值使用。这样会降低性价比，但是代码太长时，容易找不到变量的意义。
+临时变量只在当前方法中可用，所以它会导致方法变长变复杂。
+
+## Extract Method
+
+# Replacing the Conditional Logic on Price Code with Polymorphism
+
+## switch Statement
+避免使用其他对象作为switch的条件
+```java
+class Rental{
+  double getCharge() {
+		double result = 0;
+		switch (getMovie().getPriceCode()) {
+		case Movie.REGULAR:
+			result += 2;
+			if (getDaysRented() > 2) {
+				result += (getDaysRented() - 2) * 1.5;
+			}
+			break;
+		case Movie.NEW_RELEASE:
+			result += getDaysRented() * 3;
+			break;
+		case Movie.CHILDRENS:
+			result += 1.5;
+			if (getDaysRented() > 3)
+				result += (getDaysRented() - 3) * 1.5;
+			break;
+		}
+		return result;
+	}
+}
+```
+移到movie类中
+```java
+class Movie{
+  double getCharge(int daysRented) {
+        double result = 0;
+        switch (getPriceCode()) {
+            case Movie.REGULAR:
+                result += 2;
+                if (daysRented > 2) {
+                    result += (daysRented - 2) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE:
+                result += daysRented * 3;
+                break;
+            case Movie.CHILDRENS:
+                result += 1.5;
+                if (daysRented > 3)
+                    result += (daysRented - 3) * 1.5;
+                break;
+        }
+        return result;
+    }
+}
+```
+## Strategy 策略模式
+策略模式定义了一系列的算法，并将每一个算法封装起来，使每个算法可以相互替代，使算法本身和使用算法的客户端分割开来，相互独立。  
+<b>重构步骤</b>：
+1. Replace Type Code with State/Strategy
+2. Move Method
+3. Replace Conditional with Polymorphism
+
+### Replace Type Code with State/Strategy
+1. Self Encapsulate Field(自封装字段)
+>确保所有使用此类型的代码都通过getting和setting方法。
+
+  ```java
+  private Price _price;
+
+  public Movie(String title, int priceCode) {
+  		_title = title;
+  		setPriceCode(priceCode);
+  }
+
+  public int getPriceCode() {
+    return _price.getPriceCode();
+  }
+
+  public void setPriceCode(int arg) {
+    switch (arg) {
+      case CHILDRENS:
+        _price = new ChildrensPrice();
+        break;
+      case NEW_RELEASE:
+        _price = new NewReleasePrice();
+        break;
+      case REGULAR:
+        _price = new RegularPrice();
+        break;
+    default:
+      throw new IllegalArgumentException("Incorrect Price Code");
+    }
+  }
+  ```
+2. 创建一个抽象类，通过不同的子类来实现不同情况的算法。当增加情况时，容易进行修改（增加一个子类，修改setPriceCode方法）。
+
+  ```java
+  abstract class Price {
+      abstract int getPriceCode();
+  }
+
+  class ChildrensPrice extends Price {
+      int getPriceCode(){
+          return Movie.CHILDRENS;
+      }
+  }
+  class NewReleasePrice extends Price {
+  	int getPriceCode() {
+  		return Movie.NEW_RELEASE;
+  	}
+  }
+  class RegularPrice extends Price {
+  	int getPriceCode() {
+  		return Movie.REGULAR;
+  	}
+  }
+  ```
+
+## 总结
+The most important lesson from this example is the rhythm of refactoring:
+
+>test, small change, test, small change, test, small change.
+
+It is that rhythm that allows refactoring to move quickly and safely.
