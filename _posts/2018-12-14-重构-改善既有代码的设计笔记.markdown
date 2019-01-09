@@ -2,8 +2,8 @@
 layout: "post"
 title: "重构--改善既有代码的设计"
 date: "2018-12-14 16:41"
+excerpt: "Refactoring--test, small change..."
 ---
-<div id="toc" class="toc"></div>
 # The First Step in Refactoring
 Build a solid set of tests for that section of code.
 在开始重构代码前，确保已经准备好这部分功能的自动测试。
