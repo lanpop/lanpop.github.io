@@ -1,0 +1,17 @@
+---
+layout: "post"
+title: "重构--改善既有代码的设计（2）"
+date: "2019-01-09 21:04"
+excerpt: Bad Smells in Code
+---
+# Bad Smells in Code
+## Duplicated Code
+1. 在同一个类，不同的方法中，有重复的代码，--提取方法（Extract Method），调用重复的代码。
+2. 在兄弟子类中，有重复的代码，--提取方法，放到父类中（Pull Up Method）。
+  >如果代码不完全相同而是相似，--通过提取方法来分离相同代码和不同代码，部分情况可生成模版方法（Form Template Method）;
+  >如果代码是通过不同算法实现同一功能，--选择其中更明确的方法，替换算法（Substitute Algorithms）
+
+3. 在不相关的类中，有重复的代码。
+  >在一个类中提取方法，在其他方法中调用；提取方法到另一个类中，需要明确方法放在哪里更加合理，并确保其他位置没有此方法。
+
+## Long Method
