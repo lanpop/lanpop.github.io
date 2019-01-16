@@ -150,3 +150,23 @@ The most important lesson from this example is the rhythm of refactoring:
 >test, small change, test, small change, test, small change.
 
 It is that rhythm that allows refactoring to move quickly and safely.
+
+# Principles in Refactoring
+## 重构的定义
+名词：在不修改对外可见代码的情况下，通过修改内部结构来使软件更加易读易改的变化。
+动词：在不修改对外可见代码的情况下，通过一系列的重构来重组软件。
+
+## 重构的优点
+1. 重构可以改善软件的设计；
+2. 重构可以提供代码的可读性；
+3. 重构帮助你更容易查找Bugs；
+4. 重构帮助你更快的编程。
+
+## 重构的时机
+1. 增加函数的时候；
+2. 需要修改Bug的时候；
+3. 在进行代码审查的时候。
+
+## 重构和性能优化的对比
+性能优化会使代码更加复杂，降低代码可读性，但是为了提高性能，不得不这么做。
+重构会降低性能，但是重构后有助于进行性能优化。
