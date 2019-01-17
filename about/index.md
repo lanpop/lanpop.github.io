@@ -18,11 +18,11 @@ comments: false
 
 <div class="box">
   <div style="width:200px">
-    <img src="https://lanpop.github.io/about/微信二维码.jpg">
+    <img src="微信二维码.jpg">
     <p align="center">微信</p>
   </div>
   <div style="width:200px">
-    <img src="https://lanpop.github.io/about/QQ二维码.jpg">
+    <img src="QQ二维码.jpg">
     <p align="center">QQ</p>
   </div>
 </div>
