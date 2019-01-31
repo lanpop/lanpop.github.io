@@ -175,7 +175,7 @@ public class ServerProperties {
     <p align="center">显示Whitelabel</p>
   </div>
   <div style="width:400px">
-    <img src="../\_posts/image/2018-12-11-springmvc学习笔记/whitelabel不显示.jpg">
+    <img src="{{site.url}}/\_posts/image/2018-12-11-springmvc学习笔记/whitelabel不显示.jpg">
     <p align="center">不显示Whitelabel</p>
   </div>
 </div>
