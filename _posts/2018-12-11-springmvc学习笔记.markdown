@@ -171,7 +171,7 @@ public class ServerProperties {
 `ErrorMvcAutoConfiguration`文件中保存错误页面配置，如“Whitelabel Error Page”如果需要将whitelabel错误页面设置为无效，需要在配置文件application.properties中将`error.whitelabel.enabled`设置为false。  
 <div class="box">
   <div style="width:400px">
-    <img src="/2018-12-11-springmvc学习笔记-whitelabel显示.jpg">
+    <img src="2018-12-11-springmvc学习笔记-whitelabel显示.jpg">
     <p align="center">显示Whitelabel</p>
   </div>
   <div style="width:400px">
