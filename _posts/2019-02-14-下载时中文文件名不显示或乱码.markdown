@@ -1,0 +1,21 @@
+---
+layout: "post"
+title: "下载时中文文件名不显示或乱码"
+date: "2019-02-14 17:16"
+tag: [java,转码]
+excerpt:
+---
+
+文件上传和下载是开发过程中的常见功能，但是在下载中文文件名的文件时，会出现中文不显示或者乱码的情况。
+
+# 原因
+在Header中只只支持ASCⅡ，传输的文件名也必须为ASCⅡ。
+
+# 解决方案
+将中文名转码为ISO-8859-1。
+>因为ISO-8859-1编码是单字节编码，向下兼容ASCⅡ，其编码范围是0x00-0xFF，0x00-0x7F之间完全和ASCⅡ一致，0x80-0x9F之间是控制字符，0xA0-0xFF之间是文字符号。
+
+```java
+fileName=new String(fileName.getBytes(),"ISO-8859-1");
+response.setHeader("Content-Disposition","attachment;filename=" fileName);
+```
