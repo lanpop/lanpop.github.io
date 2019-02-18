@@ -1,0 +1,14 @@
+---
+layout: "post"
+title: "线程状态及锁是使用"
+date: "2019-02-18 14:10"
+tag: [java,synchronised]
+---
+
+# 线程的状态
+
+![线程状态](/images/2019/02/线程状态.jpg)
+
+![线程状态](_posts/image/线程状态.jpg)
+
+![线程状态](image/线程状态.jpg)
