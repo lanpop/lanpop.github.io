@@ -2,7 +2,7 @@
 layout: "post"
 title: "excel通过宏导出建表语句"
 date: "2019-02-19 15:32"
-tag: [excel vba]
+tag: [excel,vba]
 ---
 
 ```
@@ -65,7 +65,7 @@ End Sub
 
 ```
 
-[excel模版](../material/导出表结构.xltm)
+
 
 导出建表语句为：
 ```
