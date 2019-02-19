@@ -2,4 +2,85 @@
 layout: "post"
 title: "excel通过宏导出建表语句"
 date: "2019-02-19 15:32"
+tag: [excel vba]
 ---
+
+```
+Sub 导出表结构语句()
+
+Dim primarys As New Collection
+
+Set dataSheet = ThisWorkbook.Worksheets(ActiveSheet.Name)
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set fi = fs.CreateTextFile("C:\Users\Administrator\Desktop\" & Range("B1") & ".txt", True)
+
+fi.writeLine ("-- " & Range("B1") & "(" & Range("C1") & ")")
+fi.writeLine ("CREATE TABLE `" & Range("C1") & "` (")
+
+For i = 3 To 100
+
+    If dataSheet.Cells(i, 2) <> "" Then
+
+        colName = dataSheet.Cells(i, 2)
+        colType = dataSheet.Cells(i, 3)
+        colLength = dataSheet.Cells(i, 4)
+        isPrimary = dataSheet.Cells(i, 5)
+        canNull = dataSheet.Cells(i, 6)
+        colDetail = dataSheet.Cells(i, 7)
+
+        If colLength <> vbNullString Then
+            colLength = "(" & colLength & ")"
+        End If
+
+        If isPrimary <> vbNullString Then
+            primarys.Add (colName)
+        End If
+
+        If canNull = vbNullString Then
+            canNull = "NULL"
+        Else
+            canNull = "NOT NULL"
+        End If
+
+        fi.writeLine ("`" & colName & "`" & Chr(9) & colType & colLength & Chr(9) & canNull & "," & Chr(9) & "/*" & colDetail & "*/")
+
+
+    End If
+
+Next
+
+For i = 1 To primarys.Count
+
+    temp = "`" & primarys(i) & "`,"
+    primaryStr = primaryStr + temp
+
+Next
+
+fi.writeLine ("PRIMARY KEY (" & Left(primaryStr, Len(primaryStr) - 1) & ")")
+fi.writeLine (");")
+
+fi.Close
+
+End Sub
+
+```
+
+[excel模版](../material/导出表结构.xltm)
+
+导出建表语句为：
+```
+-- 用户信息(userinfo)
+CREATE TABLE `userinfo` (
+`usercode`	bigint unsigned	NOT NULL,	/*用户ID*/
+`username`	varchar(10)	NOT NULL,	/*用户名*/
+`phone`	bigint unsigned	NULL,	/*手机号码*/
+`idcard`	varchar(10)	NOT NULL,	/*身份证号码*/
+`email`	varchar(10)	NULL,	/*邮箱*/
+`avatar`	varchar(10)	NULL,	/*头像*/
+`status`	bigint unsigned	NULL,	/*用户状态*/
+`gmt_create`	datetime	NOT NULL,	/*创建时间*/
+`gmt_modified`	datetime	NULL,	/*修改时间*/
+PRIMARY KEY (`usercode`,`idcard`)
+);
+
+```
