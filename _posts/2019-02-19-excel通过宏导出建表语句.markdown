@@ -65,7 +65,7 @@ End Sub
 
 ```
 
-
+[excel模版](../material/导出表结构.xltm)
 
 导出建表语句为：
 ```
