@@ -120,7 +120,7 @@ protobuf {
 进行编译
 >gradle build
 
-![grpc-编译生成文件](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/grpc-%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6.jpg)
+![grpc-编译生成文件](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/grpc-%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6.jpg?raw=true)
 
 将生成的java文件复制到目标包中。
 
