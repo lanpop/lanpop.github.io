@@ -15,3 +15,40 @@ excerpt: Bad Smells in Code
   >在一个类中提取方法，在其他方法中调用；提取方法到另一个类中，需要明确方法放在哪里更加合理，并确保其他位置没有此方法。
 
 ## Long Method
+### 重构方法
+1. 方法名，一个好的方法名是提高方法可读性的关键。  
+2. 长方法，为了简短一个方法，90%的时间在提取方法（Extract Method）。
+3. 多参数，如果一个方法有很多参数，且部分参数是通过其他提取的方法返回的，可以通过Replace Temp with Query，Introduce Parameter Object 和 Preserve Whole Object减少参数。如果不能解决，就只能使用重火炮Replace Method with Method Object。
+
+### 怎么去提取方法
+1. 查找注解，注解标示出了一块代码的功能，可以将这块代码提取为方法。即使是一行代码，如果需要说明的话，也可以提取。
+2. 条件语句和循环语句，使用Decompose Conditional来处理条件表达式；提取循环到它自己的方法中。
+
+## Large Class
+如果一个类要做很多事，那么就会有很多实例变量，这样离重复的代码就不远了。将功能区分提取类或者提取子类，通过相同的前缀名或者后缀名来联系这些类。
+
+## Large Parameter List
+对象，面向对象编程相对于普通编程参数列表要小的多。
+
+## Divergent Change
+当我们需要做变更的时候，我们希望能够直接跳到一个明显的位置来做这个变更。
+
+## Shotgun Surgery
+Shotgun Surgery和Divergent Change看起来很相似，其实是相反的，Divergent Change指的是一个类收到很多变化的影响，多种功能变更它都需要修改；而Shotgun Surgery指的是一个变化引发多个类的修改。
+
+## Feature Envy
+对象的重点在于：把数据和数据的使用过程包装在一起。  
+一个方法对其他类的兴趣远高于它所在的类，那就通过Move Method送它走。   
+如果方法需要很多类的特征，那么把它方法需要数据最多的类中。  
+存在一种特别的情况：把需要同时变更的方法放到一个类中。
+
+## Data Clumps
+如果数据集是全局变量可以提取为类；  
+如果数据集是方法参数，可以考虑封装为参数对象。  
+减少数据集后可以减少bad smell，有些方法可以考虑是否移动到新类中。
+
+## Primitive Obsession
+
+
+## Switch Statements
+大部分情况，看到Switch语句，就应该考虑多态，使用Extract Method提取Switch语句，然后将方法移动到需要多态的类中，

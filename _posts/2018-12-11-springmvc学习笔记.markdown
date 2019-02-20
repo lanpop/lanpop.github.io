@@ -2,6 +2,7 @@
 layout: "post"
 title: "SpringMVC学习笔记"
 date: "2018-12-11 16:07"
+tag: [springMVC,spring boot]
 excerpt: “快速搭建Spring Web 应用”能够让我们非常快速地开始使用Spring Boot
 ---
 
@@ -166,18 +167,18 @@ public class ServerProperties {
 ```
 >server.()属性配置
 
+例如：设置HTTP端口server.port=8080
 
 ## 错误配置
 `ErrorMvcAutoConfiguration`文件中保存错误页面配置，如“Whitelabel Error Page”如果需要将whitelabel错误页面设置为无效，需要在配置文件application.properties中将`error.whitelabel.enabled`设置为false。
 
-![不显示Whitelabel](image/2018-12-11-springmvc学习笔记-whitelabel不显示.jpg)  
 <div class="box">
   <div style="width:400px">
-    <img src="whitelabel显示.jpg">
+    <img src="image/2018-12-11-springmvc学习笔记/whitelabel显示.jpg">
     <p align="center">显示Whitelabel</p>
   </div>
   <div style="width:400px">
-    <img src="{{site.url}}/_posts/image/2018-12-11-springmvc学习笔记-whitelabel不显示.jpg">
+    <img src="image/2018-12-11-springmvc学习笔记/whitelabel不显示.jpg">
     <p align="center">不显示Whitelabel</p>
   </div>
 </div>
