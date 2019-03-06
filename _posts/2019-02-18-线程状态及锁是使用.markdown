@@ -7,7 +7,7 @@ excerpt: "使用多线程的目的就是为了更好的利用CPU资源"
 ---
 
 # 线程的状态
-![线程状态](../_posts/image/线程状态.jpg)
+![线程状态](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-18-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%8F%8A%E9%94%81%E6%98%AF%E4%BD%BF%E7%94%A8/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81.jpg?raw=true)
 
 1. **新建状态**：线程被创建后进入新建状态，如：Thread thread=new Thread()。
 2. **可执行状态**：触发start()方法后进入可执行状态，争夺CPU资源；
@@ -29,6 +29,7 @@ excerpt: "使用多线程的目的就是为了更好的利用CPU资源"
 wait()、notify()、notifyall()定义在Object中，因为需要对“同步锁”进行操作，通过锁对象来调用。
 notify()唤醒等待该锁的一个线程，如果有多个等待线程，就随机唤醒一个。
 notifyall()唤醒所有等待该锁的一个线程。
+![wait()位置](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-18-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%8F%8A%E9%94%81%E6%98%AF%E4%BD%BF%E7%94%A8/wait%E6%96%B9%E6%B3%95%E4%BD%8D%E7%BD%AE.jpg?raw=true)
 
 ## yield() 让步
 让当前线程退出执行状态，进入可执行状态，但不保证会是其他相同优先级的线程获取CPU资源。因为让步的线程进入可执行状态，也会参与争夺CPU资源，所以也有可能再次获得CPU资源。

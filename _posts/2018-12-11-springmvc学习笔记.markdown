@@ -31,7 +31,7 @@ Eric Evans在《Domain-DrivenDesign》（DDD：领域驱动设计）中有一条
 ## 1、DispatcherServlet
 每个Spring Web应用的入口都是DispatcherServlet。
 
-![DispatcherServlet运行过程](image/2018-12-11-springmvc学习笔记/DispatcherServlet运行过程.jpg)
+![DispatcherServlet运行过程](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2018-12-11-springmvc%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/DispatcherServlet%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.jpg?raw=true)
 
 1. 将HTTP请求分发给HandlerMapping，HandlerMapping将URL与控制器关联；
 2. 通过@RequestMapping对应控制器的对应方法被调用，并返回视图名称；

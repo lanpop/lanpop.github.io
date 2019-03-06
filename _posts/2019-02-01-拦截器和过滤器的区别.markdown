@@ -14,7 +14,7 @@ excerpt: 过滤器包裹Servlet，Servlet包裹拦截器。
 5. 在action的生命周期中，拦截器可以多次被调用，而过滤器只能在容器初始化时被自动实例化。
 6. **拦截器可以获取IOC容器中的各个bean，而过滤器不行。**
 
-![层级关系](image/2019-02-01-拦截器和过滤器的区别/层级关系.jpg)
+![层级关系](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-01-%E6%8B%A6%E6%88%AA%E5%99%A8%E5%92%8C%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/%E5%B1%82%E7%BA%A7%E5%85%B3%E7%B3%BB.jpg?raw=true)
 
 # 拦截器和过滤器的触发
 ## 过滤器的触发
@@ -37,7 +37,7 @@ after...
 
 调用Servlet的doService()方法是在chain.doFilter()方法中进行的。  
 
-![过滤器触发时机](image/2019-02-01-拦截器和过滤器的区别/过滤器触发时机.jpg)
+![过滤器触发时机](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-01-%E6%8B%A6%E6%88%AA%E5%99%A8%E5%92%8C%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/%E8%BF%87%E6%BB%A4%E5%99%A8%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA.jpg?raw=true)
 
 ## 拦截器的触发
 ```java

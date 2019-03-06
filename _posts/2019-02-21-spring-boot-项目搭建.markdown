@@ -174,11 +174,11 @@ public class ServerProperties {
 
 <div class="box">
   <div style="width:400px">
-    <img src="image/2018-12-11-springmvc学习笔记/whitelabel显示.jpg">
+    <img src="https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-21-spring-boot-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/whitelabel%E6%98%BE%E7%A4%BA.jpg?raw=true">
     <p align="center">显示Whitelabel</p>
   </div>
   <div style="width:400px">
-    <img src="image/2018-12-11-springmvc学习笔记/whitelabel不显示.jpg">
+    <img src="https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-21-spring-boot-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/whitelabel%E4%B8%8D%E6%98%BE%E7%A4%BA.jpg?raw=true">
     <p align="center">不显示Whitelabel</p>
   </div>
 </div>

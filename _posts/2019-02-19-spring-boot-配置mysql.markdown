@@ -33,4 +33,4 @@ collation-server=uft8_general_ci
 ```
 
 重启数据库服务，查看表各列编码确认为utf8
-![字符集]()
+![字符集](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-19-spring-boot-%E9%85%8D%E7%BD%AEmysql/mysql%E5%88%97%E5%AD%97%E7%AC%A6%E9%9B%86.jpg?raw=true)
