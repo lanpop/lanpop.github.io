@@ -185,7 +185,7 @@ public class ServerProperties {
 
 # 其他
 ## 数据库连接
-[spring boot 配置mysql](https://lanpop.github.io/spring-boot-%E9%85%8D%E7%BD%AEmysql/)
+[spring boot 配置mysql](https://lanpop.github.io/spring-boot-%E9%85%8D%E7%BD%AEmysql/)  
 [spring-boot整合MyBatis](https://lanpop.github.io/spring-boot%E6%95%B4%E5%90%88mybatis/)
 
 ## 自定义元数据，可从application.yml中读取参数

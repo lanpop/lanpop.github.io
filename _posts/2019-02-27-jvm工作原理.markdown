@@ -3,7 +3,7 @@ layout: "post"
 title: "JVM工作原理"
 date: "2019-02-27 09:15"
 tag: [java,JVM]
-excerpt:
+excerpt: "JVM内存管理及垃圾回收机制、"
 ---
 
 # JVM内存管理及垃圾回收机制
