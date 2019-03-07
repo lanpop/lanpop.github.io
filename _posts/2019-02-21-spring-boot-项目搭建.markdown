@@ -169,7 +169,7 @@ public class ServerProperties {
 
 例如：设置HTTP端口server.port=8080
 
-## 错误配置
+## 8、错误配置
 `ErrorMvcAutoConfiguration`文件中保存错误页面配置，如“Whitelabel Error Page”如果需要将whitelabel错误页面设置为无效，需要在配置文件application.properties中将`error.whitelabel.enabled`设置为false。
 
 <div class="box">
@@ -182,6 +182,11 @@ public class ServerProperties {
     <p align="center">不显示Whitelabel</p>
   </div>
 </div>
+
+# 其他
+## 数据库连接
+[spring boot 配置mysql](https://lanpop.github.io/spring-boot-%E9%85%8D%E7%BD%AEmysql/)
+[spring-boot整合MyBatis](https://lanpop.github.io/spring-boot%E6%95%B4%E5%90%88mybatis/)
 
 ## 自定义元数据，可从application.yml中读取参数
 
