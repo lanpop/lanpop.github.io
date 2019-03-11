@@ -222,6 +222,7 @@ public class PicturesUploadProperties {
 }
 
 ```
+>可使用@PropertySource(value = "file:src/main/resources/config/temp.yml")指定配置文件，默认为application.yml
 
 application.yml中定义属性
 ```
@@ -273,6 +274,35 @@ implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 messages文件只建了message_en.properties和messages_zh_CN.properties。
 
 **必须有个messages.properties**
+
+## @Valid 注解在RestController中校验报错400错误，无法返回报错信息
+默认校验不通过会导致400错误  
+**报错信息如下：**
+
+![报错信息](https://github.com/lanpop/lanpop.github.io/blob/master/_posts/image/2019-02-21-spring-boot-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/Valid%E6%8A%A5%E9%94%99.jpg?raw=true)
+
+```java
+@RequestMapping(value = "/test",method = RequestMethod.POST)
+public String createAccount(@Valid AccountInfo accountInfo, String username, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()){
+				return Integer.toString(bindingResult.getErrorCount());
+		}
+		return null;
+}
+```
+**解决方案：BindingResult bindingResult必须紧跟需校验字段后**
+```java
+@RequestMapping(value = "/test",method = RequestMethod.POST)
+    public String createAccount(@Valid AccountInfo accountInfo, BindingResult bindingResult, String username) {
+        if (bindingResult.hasErrors()){
+            return Integer.toString(bindingResult.getErrorCount());
+        }
+        return null;
+    }
+```
+
+
+
 
 <style>
 .box{
