@@ -1,0 +1,58 @@
+---
+layout: "post"
+title: "日期相关--格式化、计算等"
+date: "2019-03-11 14:10"
+excerpt:
+---
+
+# 计算两个日期间隔多少年多少月多少天
+
+## 1、Calendar类
+```java
+Calendar now=Calendar.getInstance();
+Calendar target=Calendar.getInstance();
+now.setTime(new Date());
+target.setTime(new SimpleDateFormat("yyyy-MM-dd").parse("2013-07-07"));
+
+int year = now.get(Calendar.YEAR) - target.get(Calendar.YEAR);
+int month = now.get(Calendar.MONTH) - target.get(Calendar.MONTH);
+int day = now.get(Calendar.DAY_OF_MONTH) - target.get(Calendar.DAY_OF_MONTH);
+
+if (day<0){
+    month--;
+}
+if (month<0){
+    month+=12;
+    year--;
+}
+if (year==0){
+    System.out.println("相差："+month+"月");
+}else{
+    System.out.println("相差："+year+"年"+month+"月");
+}
+```
+>相差：5年8月
+
+## Period类
+java8新特性  
+Period操作日期
+```java
+LocalDate now=LocalDate.now();
+LocalDate target=LocalDate.of(2013,7,16);
+Period period=Period.between(target,now);
+
+System.out.println(target+"和"+now+"间隔"+period.getYears()+"年"+period.getMonths()+"月"+period.getDays()+"日");
+```
+>2013-07-16和2019-03-11间隔5年7月23日
+
+## Duration类
+java8新特性
+Duration持有的时间精确到纳秒。很容易计算两个日期中间的差异。
+```java
+LocalDateTime now=LocalDateTime.now();
+LocalDateTime target=LocalDateTime.of(2019,2,16,0,0,0);
+Duration duration=Duration.between(target,now);
+
+System.out.println(target+"和"+now+"间隔："+duration.toDays()+"日，共："+duration.toHours()+"小时");
+```
+>2019-02-16T00:00和2019-03-11T15:11:11.589027间隔：23日，共：567小时
