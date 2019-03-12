@@ -1,0 +1,91 @@
+---
+layout: "post"
+title: "设计模式 - 外观模式 Facade"
+date: "2019-03-08 09:41"
+excerpt: 外观模式的本质是：封装交互，简化调用。外观模式定义了一个高层的功能，为子系统中的多个模块协同的完成某种功能需求提供简单的对外功能调用方式，使得这一子系统更加容易被外部使用。
+---
+# 简介
+外观模式定义了一个高层的功能，为需要子系统中的多个模块协同完成的某种功能需求提供简单的对外功能调用方式，使得这一子系统更加容易被外边使用。
+
+# 举个例子吧
+小二想开家餐馆，需要各种审批流程，才能获得各种的许可证，才能开张。
+
+首先提供一个行政部门的接口，包括行政部门的统一业务种类
+```java
+public interface Executive {
+
+    /**
+     * 审批业务
+     */
+    void approve();
+}
+```
+
+行政部门包括卫生局、税务局、工商局等。  
+卫生局类：
+```java
+public class HealthOffice implements Executive {
+    @Override
+    public void approve() {
+        System.out.println("卫生局审批通过！");
+    }
+}
+```
+
+税务局类：
+```java
+public class TexOffice implements Executive {
+    @Override
+    public void approve() {
+        System.out.println("税务局审批通过！");
+    }
+}
+```
+
+工商局类：
+```java
+public class AICOfice implements Executive {
+    @Override
+    public void approve() {
+        System.out.println("工商局审批通过！");
+    }
+}
+```
+
+小二就需要去这些部门办理审批手续了
+```java
+public static void main(String[] args) {
+    System.out.println("去办审批手续...");
+    new HealthOffice().approve();
+    new TexOffice().approve();
+    new AICOfice().approve();
+    System.out.println("开餐馆审批完了！");
+}
+```
+
+也就相当于小二需要去三个不同的部门办理对应的审批业务，需要自己了解都需要哪些部门的审批以及整个的审批流程。
+
+而外观模式就相当于提供一个开店审批部门，小二只需要到这一个部门提交申请就可以了。
+实现如下：  
+提供一个开店审批部门，一个外观类：
+```java
+public class ApproveFacade {
+    public void wholeApprove(){
+        new HealthOffice().approve();
+        new TexOffice().approve();
+        new AICOfice().approve();
+    }
+}
+```
+办理审批手续
+```java
+public static void main(String[] args) {
+    System.out.println("去办审批手续...");
+    new ApproveFacade().wholeApprove();
+    System.out.println("开餐馆审批完了！");
+}
+```
+
+这样小二去办理审批就不需要知道内部的审批流程，只需要找到开店审批部门提交申请即可。同时业务流程有变动也只需要修改外观类即可。
+
+外观模式的目的不是给与子系统添加新的功能接口，而是为了让外部减少与子系统内多个模块的交互，松散耦合，从而让外部能够更简单的使用子系统。
