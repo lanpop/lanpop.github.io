@@ -145,7 +145,7 @@ public class MultipartProperties {
 }
 ```
 
->使用spring.servlet.multipart.（注释）属性配置对应属性
+>使用spring.servlet.multipart.属性配置对应属性
 
 ## 7、Servlet容器配置
 
