@@ -3,7 +3,7 @@ layout: "post"
 title: "Spring-Boot 项目搭建"
 date: "2019-02-21 09:52"
 tag: [java,springboot]
-expert: "Spring Boot是为了简化Spring应用的创建、运行、调试、部署等而出现的，使用它可以做到专注于Spring应用的开发，而无需过多关注XML的配置。"
+excerpt: "Spring Boot是为了简化Spring应用的创建、运行、调试、部署等而出现的，使用它可以做到专注于Spring应用的开发，而无需过多关注XML的配置。"
 ---
 
 # 搭建SpringMVC项目的步骤：
