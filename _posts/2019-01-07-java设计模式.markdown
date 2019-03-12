@@ -6,3 +6,4 @@ tag: [java]
 excerpt: 碰到就记一下，单例设计模式等。
 ---
 1. [单例设计模式](https://lanpop.github.io/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9%E4%B8%8E%E5%BA%94%E7%94%A8/)
+2. [外观模式（Facade）](https://lanpop.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F-facade/)
