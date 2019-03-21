@@ -1,0 +1,66 @@
+---
+layout: "post"
+title: "Oracle批量插入"
+date: "2019-03-21 09:11"
+tag: [Oracle]
+excerpt: Oracle如何insert into多个values
+---
+# 普通插入语句
+```sql
+INSERT INTO 某表(各个列) VALUES(各个值)  
+```
+那是不是可以多加几个VALUES()一起插入？  
+INSERT INTO 表名(各个列) VALUES(各个值), VALUES(各个值), VALUES(各个值)...
+**然而，并不行**。
+
+# INSERT ALL INTO
+Oracle提供了多表多条插入的功能
+```sql
+INSERT ALL
+INTO 某表(各个列) VALUES(各个值)
+INTO 某表(各个列) VALUES(各个值)
+INTO 某表(各个列) VALUES(各个值)
+...
+SELECT语句
+```
+>SELECT必须要有，它决定每条INTO语句插入多少条，如果SELECT语句查出10条记录，那么相当于将每条INTO语句插入10条相同的数据。
+
+我们这里因为是做批量插入，只需要插入一条即可，所以可以借助dual表。SELECT 1 FROM dual。
+
+# INSERT INTO SELECT
+还有一种插入方式
+```sql
+INSERT INTO 某表(各个列) SELECT
+  各个列
+FROM
+  某表
+-------------------------------
+INSERT INTO person (Id) SELECT
+	Id
+FROM
+	person
+WHERE
+	Id = 1
+```
+可以查询结果插入目标表中，那么可以通过SELECT 各个值 FROM dual UNION ALL来实现多条插入。
+```sql
+INSERT INTO person (Id) SELECT
+	Id
+FROM
+	psrson
+UNION ALL
+	SELECT
+		1
+	FROM
+		DUAL
+	UNION ALL
+		SELECT
+			1
+		FROM
+			DUAL
+		UNION ALL
+			SELECT
+				1
+			FROM
+				DUAL
+```
